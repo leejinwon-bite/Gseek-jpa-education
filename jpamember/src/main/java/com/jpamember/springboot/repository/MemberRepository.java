@@ -79,8 +79,9 @@ public interface MemberRepository extends JpaRepository<Member, Integer> {
 //	: 콜론을 사용하는 이름 기반 (순서가 햇갈려서 잘못 입력해도 에러 표시 안나는 ? 사용보다는 실수가 훨씬 덜 하게된다. 실무에서 더 선호하는편)
 	@Modifying
 	@Transactional
-	@Query("update Member m set m.name = :name, m.age = :age where m.num = :num")
-	int updateMemberQuery(@Param("num") int num, @Param("name") String name, @Param("age") int age);
+	@Query("update Member m set m.name = :name, m.age = :age, m.phone = :phone where m.num = :num")
+	int updateMemberQuery(@Param("num") int num, @Param("name") String name, @Param("age") int age,
+			@Param("phone") String phone);
 	
 //	JPQL 사용 Like 콜론 : 파라미터 바인딩
 //	between 10 and 20 사용해서 나이 값을 매개변수로 처리하여 재작성 해보시오. 이름엔 순신 들어가고 나이 10~20, 정렬 이름기준 오름차순 하시오.

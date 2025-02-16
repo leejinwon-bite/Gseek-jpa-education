@@ -40,13 +40,14 @@ public class JpaController {
 			//기존 회원 정보 수정
 			Member member = memberRepository.findById(num).orElse(null);
 			
-			model.addAttribute( "memberDTO" ,member);
+			model.addAttribute( "member" ,member);
 			model.addAttribute("formTitle", "Modification");
 		} else {
 			System.out.println("null 이네요.....!!");
 			
 			//신규 회원 등록
 			model.addAttribute( "memberDTO", new MemberDTO() ); // new MemberDTO() 는 강사가 "빈 객체"라고 하였음.
+//			메서드 매개에 MemberDTO가 없음에도 {}안에 사용됨.
 			model.addAttribute("formTitle", "Registration");
 		}
 		
@@ -57,7 +58,8 @@ public class JpaController {
 	public String insertMember( MemberDTO memberDTO, Model model,
 			@RequestParam(required = false) int num,
 			@RequestParam(required = false) String name,
-			@RequestParam(required = false) int age) {
+			@RequestParam(required = false) int age,
+			@RequestParam(required = false) String phone) {
 		
 		try {
 			// 등록 처리
@@ -73,7 +75,7 @@ public class JpaController {
 			//2 Repository로 ---> Entity를 -----> DB에 저장
 			// memberRepository.save(member);
 //			int saved = memberRepository.updateMemberQuery( 1, "테스트", 99);    //등록, 수정 처리하는 부분
-			int saved = memberRepository.updateMemberQuery(num, name, age);
+			int saved = memberRepository.updateMemberQuery(num, name, age, phone);
 //			System.out.println( saved.toString() );
 //			saved는 수정 처리된 레코드의 갯수를 반환한다. 
 			System.out.println(saved);
