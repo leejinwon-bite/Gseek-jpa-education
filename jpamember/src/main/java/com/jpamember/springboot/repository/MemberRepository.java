@@ -46,14 +46,21 @@ public interface MemberRepository extends JpaRepository<Member, Integer> {
 //	라고 생각함.
 	Page<Member> findByNameContainsOrIdContains( String name, String id, Pageable pageable );
 	
+    Page<Member> findByNameContainsOrIdContainsOrPhoneContains
+	      ( String name, String id, String phone, Pageable pageable );
+	
+//	 Page<Member> findByNameContainsOrIdContainsOrPhoneContainsOrAgeContains(
+//			String name, String id, String phone, Integer age, Pageable pageable);
+	
 //	정렬 쿼리 메소드 만들기 ~이상, 오름차순 정렬
+//	 어째서 ???? num의 Type이 여기선 Integer 인 것일까????????
 	Page<Member> findByNumGreaterThanEqualOrderByNameAsc( Integer num, Pageable pageable );
 	
 //	문제1 - 나이가 20 살 이하인 회원들을 이름을 기준으로 내림차순으로 정렬하는 검색을 구현 하시오.
 	Page<Member> findByAgeLessThanEqualOrderByNameDesc( Integer age, Pageable pageable );
 	
 //	문제2 - 순신 이라는 이름이 들어가는 회원을 모두 찾으세요, 이때 이름기준 오름차순 정렬, 페이징도 같이 구현하시오.
-//	Page<Member> findByNameContainsOrderByNameDesc(String name, Pageable pageable);
+	Page<Member> findByNameContainsOrderByNameDesc(String name, Pageable pageable);
 	
 	Page<Member> findByNameContains(String name, Pageable pageable);
 	
@@ -72,7 +79,7 @@ public interface MemberRepository extends JpaRepository<Member, Integer> {
 	public Page<Member> findByNameBetween( String name, Pageable pageable );
 	
 //	위 문제를 키워드 쿼리 메소드로 만들어 보시오.
-	public Page<Member> findByNameContainingAndAgeBetweenOrderByNameDesc( String name, int start, int end,
+	Page<Member> findByNameContainingAndAgeBetweenOrderByNameDesc( String name, int start, int end,
 			Pageable pageable );
 	
 	

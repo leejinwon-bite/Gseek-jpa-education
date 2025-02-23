@@ -56,7 +56,8 @@
   <div>
     <!-- <button th:onclick="'location.href=\'' + @{jpa/memberList(page=0, size=#{paging.size} )} + '\';'"> -->
     
-    <button th:onclick="'location.href=\'' + @{jpa/memberList(page=0, size=20)} + '\';'">
+    <!-- <button th:onclick="'location.href=\'' + @{jpa/memberList(page=0, size=20)} + '\';'"> -->
+    <button th:onclick="'location.href=\'' + @{jpa/memberList(page=0)} + '\';'">
     JPA Member List</button>
     <button onClick="location.href='/jpa/memberWriteForm';">JPA Member Registration</button>
   </div>

@@ -50,10 +50,21 @@
 			<input type="text" id="searchKeyword" name="searchKeyword" placeholder="ID 입력">
 			<button type="submit">Search</button>
 		</form>-->
-		<form style="padding: 10px; border: 0px solid; width: 710px; display: flex; justify-content: flex-end;"
+		<!-- <form style="padding: 10px; border: 0px solid; width: 710px; display: flex; justify-content: flex-end;"
 				    th:action="@{/jpa/memberList}" method="GET">
 					Name or ID 검색 &nbsp;			
 			<input type="text" id="searchKeyword" name="searchKeyword" placeholder="ID 입력" autocomplete="off">
+			&nbsp;
+			<button type="submit">Search</button>
+		</form> -->
+		
+		<form style="padding: 10px; border: 0px solid; width: 710px; display: flex; justify-content: flex-end;"
+				    th:action="@{/jpa/memberList}" method="GET">
+					Name or ID or Phone 검색 &nbsp;		
+					
+						
+			<input type="text" id="searchKeyword" name="searchKeyword" autocomplete="off">
+			
 			&nbsp;
 			<button type="submit">Search</button>
 		</form>
